@@ -1,0 +1,95 @@
+show databases;
+UC1
+
+CREATE DATABASE AddressBookService;
+
+
+USE AddressBookService;
+
+
+SELECT DATABASE ();
+
+
+UC2
+
+
+CREATE TABLE  AddressBook
+(
+first name VARCHAR (20) NOT NULL,
+last name VARCHAR (20) NOT NULL,
+address VARCHAR (150) NOT NULL,
+city VARCHAR (50) NOT NULL,
+state VARCHAR (50) NOT NULL,
+zip code INT UNSIGNED NOT NULL AUTO_INCREMENT,
+phone number INT (10),
+emailid VARCHAR (50) NOT NULL
+);
+
+DESCRIBE AddressBook;
+
+
+UC3
+  
+
+INSERT INTO AddressBook (first name, last name, address, city, state, zip code, phone number, emailid) VALUES
+('Shreya', 'Salanke', 'Smart city', 'Banglore', 'Karnataka', 566879, 9876543210, 'shreya@gmail.com'),
+('Achala', 'Gowda', 'WhiteField', 'Bangalore', 'Karnataka', 641553, 98756878210, 'achalag@gmail.com'),
+('Harsha', 'Salanke', 'Yashwanthpur', 'Banglore', 'Karnataka', 741248, 9854627895, 'harshas@gmail.com'),
+('Sharan', 'Kumar', 'Ramnagar', 'Mysore', 'Karnataka', 541218, 9878552345, 'sharan@gmail.com'),
+('Sudheep', 'Kicha', 'JP Nagar', 'Banglore', 'Karnataka', 741358, 7354686538, 'sudheepk@gmail.com');
+
+SELECT * FROM AddressBook;
+
+UC4
+
+UPDATE AddressBook SET emailid = 'shreya15@gmail.com' WHERE first name = 'Shreya';
+
+SELECT * FROM AddressBook;
+
+
+UC5
+
+DELETE FROM AddressBook WHERE first name = 'Shreya';
+
+SELECT * FROM AddressBook;
+
+
+UC6
+
+SELECT first name FROM AddressBook WHERE city = 'Banglore' OR state = 'Karnataka';
+
+
+UC7
+
+SELECT COUNT (first name) FROM AddressBook WHERE city = 'Banglore' OR state = 'Karnataka'; 
+
+
+UC8 
+
+SELECT * FROM AddressBook WHERE city = 'Banglore' ORDER BY first name;
+
+UC9 
+
+
+ALTER TABLE AddressBook 
+ADD  type VARCHAR(150),
+	name VARCHAR(100)
+UPDATE AddressBook SET type = 'Friend', AddressBookName = 'FriendsBook' where firstname in ('Achala','Sharan','Pallavi');
+UPDATE AddressBook SET type = 'Family', AddressBookName = 'FamilyBook' where firstname in ('Harsha','Sudheep','Ashish');
+UPDATE AddressBook SET type = 'Profession', AddressBookName = 'Office' where firstname = ('Suchitra');
+select * from AddressBook
+
+
+UC10
+
+SELECT COUNT(firts name) FROM AddressBook WHERE type = 'Friend';
+
+
+UC11
+
+INSERT INTO AddressBook (first name, last name, address, city, state, zip code, phone number, emailid, type ) VALUES
+('Ashish', 'T', 'HiTech City', 'Hyderabad', 'Telangana', 568974, 9687451236, 'ashish@gmail.com', 'Family');
+
+INSERT INTO AddressBook (first name, last name, address, city, state, zip code, phone number, emailid, type) VALUES
+('Pallavi' , 'B', 'Howrah Bridge', 'Kolkata', 'WestBengal', 654987, 9863256324, 'pallavi@gmail.com', 'Friend');
+
